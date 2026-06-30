@@ -1,286 +1,546 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Ansh Thakar - AI/ML, Python, Web Development, and Data Science Portfolio" />
-  <title>Ansh Thakar | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ansh Thakar | AI & ML Engineer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Space Grotesk', 'sans-serif']
+          },
+          colors: {
+            darkBg: '#030014'
+          }
+        }
+      }
+    }
+  </script>
   <style>
     :root{
-      --bg:#07111f; --bg2:#0b1730; --card:rgba(15,23,42,.72); --card2:rgba(17,24,39,.92);
-      --text:#edf4ff; --muted:#aab7d3; --accent:#7cc4ff; --accent2:#8a7dff;
-      --shadow:rgba(0,0,0,.45); --border:rgba(255,255,255,.12);
+      --glass: rgba(255,255,255,.04);
+      --glass2: rgba(255,255,255,.025);
+      --border: rgba(255,255,255,.08);
     }
-    *{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",system-ui,sans-serif}
-    html{scroll-behavior:smooth}
     body{
-      color:var(--text); line-height:1.65; overflow-x:hidden;
       background:
-        radial-gradient(circle at top left, rgba(138,125,255,.18), transparent 35%),
-        radial-gradient(circle at top right, rgba(124,196,255,.16), transparent 30%),
-        linear-gradient(180deg,var(--bg),var(--bg2));
+        radial-gradient(circle at 20% 20%, rgba(168,85,247,.14), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(59,130,246,.12), transparent 28%),
+        radial-gradient(circle at 50% 90%, rgba(236,72,153,.10), transparent 26%),
+        #030014;
+      overflow-x:hidden;
     }
-    body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.05),transparent 25%,transparent 75%,rgba(255,255,255,.03));opacity:.3;z-index:0}
-    section{position:relative;z-index:1;padding:90px 8%}
-    .container{max-width:1200px;margin:0 auto}
-    .section-title{display:flex;align-items:center;gap:14px;margin-bottom:35px}
-    .section-title h2{font-size:clamp(1.8rem,4vw,2.7rem)}
-    .line{width:70px;height:4px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 0 20px rgba(124,196,255,.25)}
-    p{color:var(--muted)}
-    a{color:inherit}
-    .hero{min-height:100vh;display:grid;place-items:center;padding-top:40px}
-    .hero-container{width:100%;max-width:1250px;display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
-    .badge{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.04);backdrop-filter:blur(16px);box-shadow:0 12px 30px rgba(0,0,0,.18);color:#d5e8ff;font-size:.95rem;margin-bottom:22px}
-    .badge-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 18px var(--accent)}
-    .hero-copy h1{font-size:clamp(2.7rem,6vw,5.3rem);line-height:.95;margin-bottom:16px;letter-spacing:-1.6px;text-shadow:0 12px 30px rgba(0,0,0,.45)}
-    .gradient{background:linear-gradient(90deg,#fff,#9dd7ff 45%,#9b8cff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hero-copy h3{font-size:clamp(1.05rem,2vw,1.35rem);color:#90cfff;margin-bottom:18px;font-weight:700}
-    .hero-copy p{max-width:690px;font-size:1.03rem;line-height:1.8;margin-bottom:26px}
-    .hero-actions,.contact-actions,.project-links{display:flex;flex-wrap:wrap;gap:14px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 22px;border-radius:14px;
-      border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
-      color:var(--text);text-decoration:none;box-shadow:0 14px 30px rgba(0,0,0,.25);transition:.28s ease;backdrop-filter:blur(12px);font-weight:600
+    .glass-card{
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(0,0,0,.25);
+      transition: all .35s cubic-bezier(.4,0,.2,1);
     }
-    .btn:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 24px 50px rgba(0,0,0,.38);border-color:rgba(124,196,255,.45)}
-    .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07111f;border:none}
-    .hero-visual{display:grid;place-items:center}
-    .hero-frame{
-      position:relative;width:min(360px,88vw);aspect-ratio:1/1;display:grid;place-items:center;border-radius:32px;padding:18px;
-      background:linear-gradient(145deg,rgba(124,196,255,.15),rgba(138,125,255,.12)),rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.14);box-shadow:0 25px 80px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.12);
-      transform:perspective(1000px) rotateY(-10deg) rotateX(8deg);animation:float 6s ease-in-out infinite
+    .glass-card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(168,85,247,.35);
+      box-shadow: 0 25px 70px rgba(0,0,0,.35);
     }
-    .hero-frame::before{content:"";position:absolute;inset:-2px;border-radius:34px;background:linear-gradient(135deg,rgba(124,196,255,.5),rgba(138,125,255,.2),transparent 72%);filter:blur(18px);z-index:-1;opacity:.75}
-    .profile-pic{width:100%;height:100%;object-fit:cover;border-radius:24px;border:4px solid rgba(255,255,255,.06);box-shadow:0 18px 45px rgba(0,0,0,.35)}
-    .stats{display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:14px;margin-top:28px;max-width:640px}
-    .stat,.glass{background:var(--card);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(14px);box-shadow:0 15px 28px rgba(0,0,0,.18)}
-    .stat{padding:18px}
-    .stat strong{display:block;font-size:1.25rem;margin-bottom:5px;color:#fff}
-    .stat span{color:var(--muted);font-size:.95rem}
-    .about{max-width:1120px;margin:0 auto}
-    .about p{font-size:1.05rem;line-height:1.9;margin-bottom:18px;max-width:940px}
-    .highlight-bar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:24px}
-    .mini-card{padding:18px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--border);box-shadow:0 18px 34px rgba(0,0,0,.25);min-height:110px}
-    .mini-card h4{font-size:1rem;margin-bottom:8px}
-    .mini-card p{font-size:.92rem;line-height:1.5}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px}
-    .card{
-      background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03)),var(--card2);
-      padding:24px;border-radius:24px;border:1px solid var(--border);box-shadow:0 18px 38px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.06);
-      transition:.32s ease;transform-style:preserve-3d
+    .text-gradient{
+      background: linear-gradient(135deg,#fff 0%,#c084fc 42%,#60a5fa 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
-    .card:hover{transform:translateY(-8px) perspective(900px) rotateX(1deg);box-shadow:0 28px 65px rgba(0,0,0,.45),0 0 0 1px rgba(124,196,255,.12)}
-    .card h4{font-size:1.2rem;margin-bottom:10px;color:#f8fbff}
-    .project-img,.cert-img{width:100%;height:170px;object-fit:cover;border-radius:16px;margin-bottom:16px;border:1px solid rgba(255,255,255,.09);box-shadow:0 14px 26px rgba(0,0,0,.25)}
-    .tags{color:var(--accent);font-size:.9rem;margin-top:10px;font-weight:600;letter-spacing:.2px}
-    .small-note{margin-top:10px;font-size:.94rem;color:#b9c7df}
-    .project-links a{
-      display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;border-radius:10px;border:1px solid rgba(124,196,255,.2);
-      background:rgba(7,17,31,.75);color:var(--accent);text-decoration:none;font-size:.9rem;transition:.25s ease
+    .grid-bg{
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 42px 42px;
     }
-    .project-links a:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07111f;transform:translateY(-2px)}
-    .cert-note{margin-bottom:20px;max-width:900px}
-    footer{position:relative;z-index:1;text-align:center;padding:28px;color:var(--muted);border-top:1px solid rgba(255,255,255,.08);background:rgba(3,8,16,.38)}
-    @keyframes float{0%,100%{transform:perspective(1000px) rotateY(-10deg) rotateX(8deg) translateY(0)}50%{transform:perspective(1000px) rotateY(-10deg) rotateX(8deg) translateY(-10px)}}
-    @media (max-width:992px){
-      .hero-container{grid-template-columns:1fr;text-align:center}
-      .hero-copy p{margin-left:auto;margin-right:auto}
-      .hero-actions,.contact-actions,.project-links{justify-content:center}
-      .stats{margin-left:auto;margin-right:auto}
-      .highlight-bar{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .hero-visual{order:-1}
+    .spotlight {
+      background: radial-gradient(circle 700px at var(--x,50%) var(--y,50%), rgba(168,85,247,.15), transparent 65%);
     }
-    @media (max-width:640px){
-      section{padding:72px 5.5%}
-      .stats,.highlight-bar{grid-template-columns:1fr}
-      .card{padding:20px}
-      .project-img,.cert-img{height:155px}
+    .reveal{
+      opacity:0;
+      transform: translateY(28px);
+      transition: all .8s ease;
     }
+    .reveal.active{
+      opacity:1;
+      transform: translateY(0);
+    }
+    .tag{
+      display:inline-block;
+      padding: 0.375rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      color: rgb(209 213 219);
+    }
+    ::-webkit-scrollbar{width:8px}
+    ::-webkit-scrollbar-track{background:#030014}
+    ::-webkit-scrollbar-thumb{background:#2e1065;border-radius:999px}
+    ::-webkit-scrollbar-thumb:hover{background:#6d28d9}
   </style>
 </head>
-<body>
+<body class="text-gray-300 font-sans antialiased selection:bg-purple-500/30 selection:text-white">
 
-<section class="hero">
-  <div class="container hero-container">
-    <div class="hero-copy">
-      <div class="badge"><span class="badge-dot"></span> AI / ML • Python • Data Science • Web Development</div>
-      <h1>Ansh <span class="gradient">Thakar</span></h1>
-      <h3>Diploma in Computer Engineering Student | Future AI Engineer / MLOps Engineer</h3>
-      <p>
-        I am a 16-year-old student from K. J. Somaiya Polytechnic, Mumbai, building practical skills in
-        Python, Machine Learning, Data Analysis, and software systems. I focus on learning by building,
-        improving projects, and preparing for real-world AI engineering and MLOps roles.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">Explore My Work</a>
-        <a href="#contact" class="btn">Get in Touch</a>
-        <a href="#about" class="btn">About Me</a>
+  <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+  <div class="fixed bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+
+  <nav class="fixed top-0 w-full z-50 glass-card bg-black/20 border-b border-white/5 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="font-mono text-xl font-bold tracking-wider text-white">AT<span class="text-purple-500">.AI</span></a>
+      <div class="hidden md:flex items-center space-x-8 font-mono text-sm tracking-wide">
+        <a href="#about" class="hover:text-purple-400 transition">About</a>
+        <a href="#education" class="hover:text-purple-400 transition">Education</a>
+        <a href="#skills" class="hover:text-purple-400 transition">Skills</a>
+        <a href="#projects" class="hover:text-purple-400 transition">Projects</a>
+        <a href="#certifications" class="hover:text-purple-400 transition">Certificates</a>
+        <a href="#contact" class="hover:text-purple-400 transition">Contact</a>
       </div>
-      <div class="stats">
-        <div class="stat glass"><strong>90%</strong><span>SSC</span></div>
-        <div class="stat glass"><strong>88.13%</strong><span>Semester 1 Distinction</span></div>
-        <div class="stat glass"><strong>Day 17</strong><span>CampusX ML Progress</span></div>
-        <div class="stat glass"><strong>OOP Basics</strong><span>Classes, Objects, Constructor, Methods</span></div>
-      </div>
+      <a href="Resume.pdf" target="_blank" class="hidden md:inline-flex items-center justify-center px-4 py-2 border border-purple-500/30 rounded-full font-mono text-xs text-purple-300 bg-purple-500/10 hover:bg-purple-500 hover:text-white transition-all duration-300">
+        Resume
+      </a>
     </div>
-    <div class="hero-visual">
-      <div class="hero-frame">
-        <img src="anshu.jpeg" class="profile-pic" alt="Ansh Thakar"/>
-      </div>
-    </div>
-  </div>
-</section>
+  </nav>
 
-<section id="about">
-  <div class="container about">
-    <div class="section-title"><div class="line"></div><h2>About Me</h2></div>
-    <p>I am Ansh Thakar, a Diploma in Computer Engineering student at K. J. Somaiya Polytechnic, Mumbai. My long-term goal is to become an AI Engineer / MLOps Engineer and eventually work in top technology companies after Diploma + B.Tech through the DSE route.</p>
-    <p>I enjoy practical learning. I focus on building real projects, understanding concepts through implementation, and improving step by step. I prefer useful engineering skills over excessive theory, and I use this approach in Python, Machine Learning, Data Analysis, and project development.</p>
-    <p>I have completed OOP basics, NumPy, Pandas, Matplotlib, Seaborn, practical data analysis, and my first Machine Learning model. I also work with JSON files, SQL data, APIs, and real data workflows. My learning path is centered on practical software engineering, AI systems, and long-term career growth.</p>
-    <div class="highlight-bar">
-      <div class="mini-card glass"><h4>Current Focus</h4><p>CampusX ML playlist, project revision, real datasets, and better GitHub portfolio quality.</p></div>
-      <div class="mini-card glass"><h4>Best Fit</h4><p>AI Engineering, ML Engineering, MLOps, automation, and practical software systems.</p></div>
-      <div class="mini-card glass"><h4>Work Style</h4><p>Build, test, debug, improve, repeat — with consistent practice and strong fundamentals.</p></div>
-      <div class="mini-card glass"><h4>Interest</h4><p>Cricket, technology, data science, AI, Python development, and product building.</p></div>
-    </div>
-  </div>
-</section>
+  <section class="relative min-h-screen flex items-center justify-center grid-bg pt-20 z-10" id="hero">
+    <div class="absolute inset-0 spotlight pointer-events-none" id="hero-spotlight"></div>
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10">
+      <div class="lg:col-span-7 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-white/10 mb-6 animate-pulse">
+          <span class="w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]"></span>
+          <span class="font-mono text-[11px] md:text-xs tracking-[.22em] text-purple-300 uppercase">Available for Internships</span>
+        </div>
 
-<section id="skills">
-  <div class="container">
-    <div class="section-title"><div class="line"></div><h2>Skills</h2></div>
-    <div class="grid">
-      <div class="card"><h4>Programming</h4><p>Python, JavaScript, C, problem solving, logical thinking</p></div>
-      <div class="card"><h4>Web Development</h4><p>HTML5, CSS3, JavaScript, responsive UI, portfolio websites</p></div>
-      <div class="card"><h4>Machine Learning</h4><p>Preprocessing, train-test split, scaling, model training, evaluation, decision boundary</p></div>
-      <div class="card"><h4>Data Analysis</h4><p>NumPy, Pandas, Matplotlib, Seaborn, EDA, data cleaning, visualization</p></div>
-      <div class="card"><h4>Data Engineering Basics</h4><p>JSON, SQL data access, API responses to DataFrames, CSV creation</p></div>
-      <div class="card"><h4>OOP Foundations</h4><p>Classes, Objects, self, Constructors, Methods, basic Magic Methods</p></div>
-      <div class="card"><h4>Automation & Systems</h4><p>Python automation, desktop applications, workflow thinking, real-world utility</p></div>
-      <div class="card"><h4>Tools & Platforms</h4><p>Git, GitHub, Google Cloud basics, command-line flow, project publishing</p></div>
-    </div>
-  </div>
-</section>
+        <h1 class="text-5xl md:text-8xl font-bold tracking-tight text-white mb-6 leading-[.95]">
+          Hi, I'm <span class="text-gradient font-extrabold">Ansh Thakar</span>
+        </h1>
 
-<section id="projects">
-  <div class="container">
-    <div class="section-title"><div class="line"></div><h2>Projects</h2></div>
-    <div class="grid">
-      <div class="card">
-        <img src="anovix.png" class="project-img" alt="ANOVIX AI project">
-        <h4>ANOVIX AI</h4>
-        <p>Advanced Python AI desktop assistant with automation and system tools.</p>
-        <div class="tags">Python • AI • Automation</div>
-        <div class="small-note">Flagship personal project and long-term portfolio identity.</div>
-        <div class="project-links">
-          <a href="https://github.com/anshthakar791-create/anovix-ai" target="_blank">GitHub</a>
-          <a href="https://anshthakar791-create.github.io/anovix-ai/" target="_blank">Live</a>
-          <a href="https://github.com/anshthakar791-create/anovix-ai/releases/latest" target="_blank">Download</a>
+        <p class="font-mono text-lg md:text-2xl text-gray-400 max-w-3xl mb-4 tracking-wide mx-auto lg:mx-0">
+          Diploma in Computer Engineering Student
+        </p>
+
+        <p class="text-lg md:text-xl font-light text-purple-400/90 max-w-2xl mb-10 tracking-wider uppercase font-mono mx-auto lg:mx-0">
+          Aspiring AI • Machine Learning • Data Analyst
+        </p>
+
+        <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
+          <span class="tag">SSC 90%</span>
+          <span class="tag">Sem 2: 88.67%</span>
+          <span class="tag">Python • ML • Power BI</span>
+          <span class="tag">KJ Somaiya Polytechnic</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 font-mono">
+          <a href="#projects" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium rounded-xl hover:opacity-90 shadow-[0_4px_20px_rgba(168,85,247,0.4)] transition-all duration-300 group">
+            View Projects <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+          <a href="Resume.pdf" target="_blank" class="w-full sm:w-auto px-8 py-4 glass-card text-white font-medium rounded-xl hover:bg-white/10 transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-file-arrow-down text-purple-400"></i> Download Resume
+          </a>
+          <a href="Video.mp4" target="_blank" class="w-full sm:w-auto px-8 py-4 glass-card text-white font-medium rounded-xl hover:bg-white/10 transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-circle-play text-pink-400"></i> Play Reel
+          </a>
         </div>
       </div>
-      <div class="card">
-        <img src="jarvis.png" class="project-img" alt="JARVIS style AI assistant project">
-        <h4>JARVIS-Style AI Assistant</h4>
-        <p>Command-driven AI assistant for automation and practical desktop actions.</p>
-        <div class="tags">Python • Automation</div>
-      </div>
-      <div class="card">
-        <img src="localrail.png" class="project-img" alt="Railway ticket booking system">
-        <h4>Railway Ticket Booking System</h4>
-        <p>Fare calculation and ticket generation system for local railway routes.</p>
-        <div class="tags">Python • Logic</div>
-      </div>
-      <div class="card">
-        <img src="weather.jpg" class="project-img" alt="Weather application">
-        <h4>Weather Application</h4>
-        <p>API-based real-time weather web app.</p>
-        <div class="tags">HTML • CSS • JS • API</div>
-        <div class="project-links">
-          <a href="https://anshthakar791-create.github.io/weather/" target="_blank">Live</a>
-          <a href="https://github.com/anshthakar791-create/weather" target="_blank">GitHub</a>
+
+      <div class="lg:col-span-5">
+        <div class="glass-card p-4 md:p-5 rounded-[2rem] relative overflow-hidden shadow-2xl">
+          <div class="absolute inset-0 bg-gradient-to-tr from-purple-600/10 via-transparent to-blue-500/10"></div>
+          <div class="relative rounded-[1.6rem] overflow-hidden border border-white/10 bg-black/20">
+            <!-- Replace this path with your actual photo inside Portfolio Assets -->
+            <img src="Image.png" alt="Ansh Thakar portrait" class="w-full h-[540px] object-cover object-top"/>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mt-4 relative">
+            <div class="glass-card rounded-2xl p-4">
+              <div class="text-xs font-mono uppercase tracking-[.2em] text-gray-500 mb-2">Focus</div>
+              <div class="text-white font-semibold">AI / ML</div>
+            </div>
+            <div class="glass-card rounded-2xl p-4">
+              <div class="text-xs font-mono uppercase tracking-[.2em] text-gray-500 mb-2">Current</div>
+              <div class="text-white font-semibold">Power BI</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <img src="tictactoe.png" class="project-img" alt="Tic Tac Toe game">
-        <h4>Tic Tac Toe Game</h4>
-        <p>Interactive browser game with strong logic and a clean UI.</p>
-        <div class="tags">HTML • CSS • JavaScript</div>
-        <div class="project-links">
-          <a href="https://anshthakar791-create.github.io/TicTacToe/" target="_blank">Live</a>
-          <a href="https://github.com/anshthakar791-create/TicTacToe" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+  <section class="py-28 max-w-7xl mx-auto px-6 relative z-10 reveal" id="about">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-5">
+        <p class="font-mono text-xs uppercase tracking-widest text-purple-500 mb-3">// 01. About Me</p>
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Building a focused AI/ML profile.</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded"></div>
+      </div>
+      <div class="lg:col-span-7 glass-card p-8 md:p-10 rounded-3xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 font-mono text-sm text-white/5 font-bold select-none text-7xl">AI</div>
+        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+          I am a Diploma in Computer Engineering student who likes learning by building. My current focus is Python, Machine Learning, Data Analysis, Power BI, SQL, and portfolio projects that look clean and professional.
+        </p>
+        <p class="text-gray-400 text-base leading-relaxed">
+          I am not trying to keep beginner clutter in my portfolio. I want a strong, recruiter-friendly website that shows real direction, real skills, and real progress.
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 mt-8 pt-8 border-t border-white/5 text-center sm:text-left">
+          <div>
+            <div class="text-3xl font-mono font-bold text-white tracking-tight">90%</div>
+            <div class="text-xs font-mono text-gray-500 uppercase tracking-widest mt-1">SSC</div>
+          </div>
+          <div>
+            <div class="text-3xl font-mono font-bold text-white tracking-tight">88.67%</div>
+            <div class="text-xs font-mono text-gray-500 uppercase tracking-widest mt-1">Diploma Sem 2</div>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <img src="CALCI.png" class="project-img" alt="Scientific calculator">
-        <h4>Scientific Calculator</h4>
-        <p>Performs basic and advanced mathematical operations.</p>
-        <div class="tags">HTML • CSS • JavaScript</div>
-        <div class="project-links">
-          <a href="https://anshthakar791-create.github.io/Scientific-Calculator/" target="_blank">Live</a>
-          <a href="https://github.com/anshthakar791-create/Scientific-Calculator" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+  <section class="py-28 max-w-7xl mx-auto px-6 relative z-10 reveal" id="education">
+    <div class="text-center mb-16">
+      <p class="font-mono text-xs uppercase tracking-widest text-purple-500 mb-3">// 02. Education</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Academic Path</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="glass-card p-6 rounded-3xl">
+        <div class="text-purple-400 text-sm font-mono uppercase tracking-[.2em] mb-3">Current</div>
+        <h3 class="text-white text-xl font-bold mb-2">Diploma in Computer Engineering</h3>
+        <p class="text-gray-400 text-sm mb-4">K. J. Somaiya Polytechnic, Mumbai</p>
+        <p class="text-gray-500 text-sm">Semester 2: 88.67%</p>
+      </div>
+      <div class="glass-card p-6 rounded-3xl">
+        <div class="text-blue-400 text-sm font-mono uppercase tracking-[.2em] mb-3">School</div>
+        <h3 class="text-white text-xl font-bold mb-2">SSC</h3>
+        <p class="text-gray-400 text-sm mb-4">Secondary School Certificate</p>
+        <p class="text-gray-500 text-sm">Score: 90%</p>
+      </div>
+      <div class="glass-card p-6 rounded-3xl">
+        <div class="text-pink-400 text-sm font-mono uppercase tracking-[.2em] mb-3">Direction</div>
+        <h3 class="text-white text-xl font-bold mb-2">Future Goal</h3>
+        <p class="text-gray-400 text-sm mb-4">AI Engineer / ML Engineer / Data Analyst</p>
+        <p class="text-gray-500 text-sm">Building skills through projects + internships</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-28 max-w-7xl mx-auto px-6 relative z-10 reveal" id="skills">
+    <div class="text-center mb-16">
+      <p class="font-mono text-xs uppercase tracking-widest text-purple-500 mb-3">// 03. Technical Stack</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Engineered Core Competencies</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="glass-card p-6 rounded-3xl">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-6 text-xl"><i class="fa-solid fa-code"></i></div>
+        <h3 class="font-mono text-lg font-semibold text-white mb-4">Programming</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">Python</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">SQL</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">JavaScript</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">HTML/CSS</span>
         </div>
       </div>
-      <div class="card">
-        <img src="FACE.png" class="project-img" alt="Face detection and login system">
-        <h4>Face Detection & Login System</h4>
-        <p>Real-time face detection and verification for secure login access.</p>
-        <div class="tags">Python • Computer Vision • Authentication</div>
+
+      <div class="glass-card p-6 rounded-3xl">
+        <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6 text-xl"><i class="fa-solid fa-chart-pie"></i></div>
+        <h3 class="font-mono text-lg font-semibold text-white mb-4">Data Analysis</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">NumPy</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">Pandas</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">Matplotlib</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">Seaborn</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">Power BI</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">Excel</span>
+        </div>
       </div>
-      <div class="card">
-        <img src="images.jpg" class="project-img" alt="Python mini projects">
-        <h4>Python Mini Projects (25+)</h4>
-        <p>Collection of Python projects focused on logic building and practice.</p>
-        <div class="tags">Python</div>
+
+      <div class="glass-card p-6 rounded-3xl">
+        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-6 text-xl"><i class="fa-solid fa-brain"></i></div>
+        <h3 class="font-mono text-lg font-semibold text-white mb-4">Machine Learning</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">Scikit-learn</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">EDA</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">Feature Eng.</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">Pipelines</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">ColumnTransformer</span>
+        </div>
+      </div>
+
+      <div class="glass-card p-6 rounded-3xl">
+        <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-400 mb-6 text-xl"><i class="fa-solid fa-terminal"></i></div>
+        <h3 class="font-mono text-lg font-semibold text-white mb-4">Tools</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">VS Code</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">Git</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">GitHub</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 font-mono text-xs text-gray-300">Jupyter</span>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="certifications">
-  <div class="container">
-    <div class="section-title"><div class="line"></div><h2>Certifications</h2></div>
-    <p class="cert-note">A collection of certificates that support my learning in Python, ML, AI, prompt engineering, and technical skills.</p>
-    <div class="grid">
-      <div class="card"><img src="prompt.png" class="cert-img" alt="Microsoft prompt engineering certificate"><p>Microsoft – Prompt Engineering with GitHub Copilot</p></div>
-      <div class="card"><img src="Ansh Thakar - Python.png" class="cert-img" alt="Kaggle Python certificate"><p>Kaggle – Python</p></div>
-      <div class="card"><img src="Ansh Thakar - Intro to Machine Learning.png" class="cert-img" alt="Kaggle introduction to machine learning certificate"><p>Kaggle – Introduction to Machine Learning</p></div>
-      <div class="card"><img src="5-Day AI Agents Intensive Course with Google.png" class="cert-img" alt="Kaggle Google AI agents intensive certificate"><p>Kaggle × Google – AI Agents Intensive</p></div>
-      <div class="card"><img src="genai.png" class="cert-img" alt="Google generative AI certificate"><p>GOOGLE - GEN AI</p></div>
-      <div class="card"><img src="hacking.png" class="cert-img" alt="Ethical hacking certificate"><p>VaultforCodes- Etchical hacking</p></div>
-      <div class="card"><img src="html.png" class="cert-img" alt="Simplilearn HTML and SQL certificate"><p>Simplilearn – HTML & SQL</p></div>
-      <div class="card"><img src="sql.png" class="cert-img" alt="Simplilearn SQL certificate"><p>Simplilearn – SQL</p></div>
-      <div class="card"><img src="be10x.png" class="cert-img" alt="Be10X AI tools workshop certificate"><p>Be10X – AI Tools & ChatGPT Workshop</p></div>
+  <section class="py-28 max-w-7xl mx-auto px-6 relative z-10 reveal" id="projects">
+    <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-16">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-purple-500 mb-3">// 04. Featured Work</p>
+        <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Selected Projects</h2>
+      </div>
+      <p class="font-mono text-sm text-gray-500 mt-4 md:mt-0 max-w-md">Only strong, relevant work. No beginner clutter.</p>
     </div>
-    <br>
-    <a href="https://drive.google.com/drive/folders/1NDf94tvYBD3xTOwR5ReStE0aM0x39qEE?usp=drive_link" target="_blank" class="btn">View All Certificates</a>
-  </div>
-</section>
 
-<section>
-  <div class="container">
-    <div class="section-title"><div class="line"></div><h2>Current Focus</h2></div>
-    <div class="grid">
-      <div class="card"><h4>1. ML Foundations</h4><p>Continue CampusX 100 Days of Machine Learning and strengthen implementation skills.</p></div>
-      <div class="card"><h4>2. Real Projects</h4><p>Build practical ML and data science projects using real datasets and clear documentation.</p></div>
-      <div class="card"><h4>3. GitHub Portfolio</h4><p>Improve presentation, proof of work, and project quality for internships and recruiters.</p></div>
-      <div class="card"><h4>4. Career Direction</h4><p>Move steadily toward AI Engineering, ML Engineering, and MLOps roles.</p></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-xs font-mono px-2.5 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20">Custom AI Build</span>
+            <div class="flex space-x-3 text-gray-400">
+              <a href="#" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-purple-400 transition-colors">Jarvis AI Assistant</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">A self-built Python assistant that handles voice-driven system actions and automation workflows.</p>
+        </div>
+        <div class="px-6 pb-6 mt-auto">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Python</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Automation</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Speech API</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-xs font-mono px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">Data Pipeline</span>
+            <div class="flex space-x-3 text-gray-400">
+              <a href="#" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-blue-400 transition-colors">IBM Attrition Pipeline</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">End-to-end classification pipeline using ColumnTransformer, preprocessing, and model serialization for attrition prediction.</p>
+        </div>
+        <div class="px-6 pb-6 mt-auto">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Sklearn</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Pipelines</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Pickle</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-xs font-mono px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Predictive ML</span>
+            <div class="flex space-x-3 text-gray-400">
+              <a href="#" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-emerald-400 transition-colors">Employee Attrition Classifier</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">Risk classification project for predicting employee attrition using feature engineering and model evaluation.</p>
+        </div>
+        <div class="px-6 pb-6 mt-auto">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Classification</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">EDA</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Feature Eng.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Deep Analysis</span>
+            <div class="flex space-x-3 text-gray-400">
+              <a href="#" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-amber-400 transition-colors">Titanic Advanced EDA</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">A polished notebook focused on exploration, missing values, correlations, and observation writing.</p>
+        </div>
+        <div class="px-6 pb-6 mt-auto">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Pandas</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Matplotlib</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">EDA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-xs font-mono px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Data Harvesting</span>
+            <div class="flex space-x-3 text-gray-400">
+              <a href="#" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-cyan-400 transition-colors">Web Scraping Engine</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">A Python scraping workflow that converts unstructured web data into analysis-ready tabular form.</p>
+        </div>
+        <div class="px-6 pb-6 mt-auto">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">BeautifulSoup</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Requests</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-xs font-mono px-2.5 py-1 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Predictive ML</span>
+            <div class="flex space-x-3 text-gray-400">
+              <a href="#" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-rose-400 transition-colors">Placement Prediction Machine</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">A classification model that maps academic and skill features to placement probability.</p>
+        </div>
+        <div class="px-6 pb-6 mt-auto">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">ML</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Sklearn</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Classification</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-xs font-mono px-2.5 py-1 rounded bg-violet-500/10 text-violet-400 border border-violet-500/20">Analytics</span>
+            <div class="flex space-x-3 text-gray-400">
+              <a href="#" class="hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-violet-400 transition-colors">Data Storytelling Case Study</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">A clean slot for future business dashboards, reporting, and Power BI storytelling work.</p>
+        </div>
+        <div class="px-6 pb-6 mt-auto">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Power BI</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">Excel</span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400">SQL</span>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact">
-  <div class="container">
-    <div class="section-title"><div class="line"></div><h2>Contact</h2></div>
-    <p>Reach out for collaboration, internships, or opportunities.</p>
-    <div class="contact-actions">
-      <a href="https://wa.me/919930620710?text=Hello Ansh Thakar." class="btn btn-primary">WhatsApp</a>
-      <a href="https://www.instagram.com/x_ansh7_x?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn">Instagram</a>
-      <a href="mailto:anshthakar791@gmail.com" class="btn">Gmail</a>
+  <section class="py-28 max-w-7xl mx-auto px-6 relative z-10 reveal" id="certifications">
+    <div class="text-center mb-16">
+      <p class="font-mono text-xs uppercase tracking-widest text-purple-500 mb-3">// 05. Certificates</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Only Strong Credentials</h2>
+      <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">Keep only the certificates that strengthen the story. Remove beginner clutter.</p>
     </div>
-  </div>
-</section>
 
-<footer>© 2026 Ansh Thakar. All rights reserved.</footer>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-lg flex-shrink-0"><i class="fa-solid fa-building-shield"></i></div>
+        <div>
+          <h3 class="font-bold text-white text-base">Deloitte Job Simulation</h3>
+          <p class="text-gray-500 text-xs font-mono mt-1">Forage</p>
+        </div>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-lg flex-shrink-0"><i class="fa-solid fa-chart-line"></i></div>
+        <div>
+          <h3 class="font-bold text-white text-base">Tata Job Simulation</h3>
+          <p class="text-gray-500 text-xs font-mono mt-1">Data / analytics relevant</p>
+        </div>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-lg flex-shrink-0"><i class="fa-solid fa-terminal"></i></div>
+        <div>
+          <h3 class="font-bold text-white text-base">Microsoft Prompt Engineering</h3>
+          <p class="text-gray-500 text-xs font-mono mt-1">GenAI workflow</p>
+        </div>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 text-lg flex-shrink-0"><i class="fa-brands fa-kaggle"></i></div>
+        <div>
+          <h3 class="font-bold text-white text-base">Kaggle Python</h3>
+          <p class="text-gray-500 text-xs font-mono mt-1">Foundational Python</p>
+        </div>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-lg flex-shrink-0"><i class="fa-brands fa-kaggle"></i></div>
+        <div>
+          <h3 class="font-bold text-white text-base">Kaggle Machine Learning</h3>
+          <p class="text-gray-500 text-xs font-mono mt-1">Core ML basics</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-28 max-w-5xl mx-auto px-6 relative z-10 text-center reveal" id="contact">
+    <p class="font-mono text-xs uppercase tracking-widest text-purple-500 mb-3">// 06. Contact</p>
+    <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">Let's connect</h2>
+    <p class="text-gray-400 max-w-xl mx-auto mb-10">For internships, collaborations, or project discussions, use the links below.</p>
+
+    <div class="inline-flex flex-wrap items-center justify-center gap-4 p-4 rounded-2xl glass-card bg-white/[0.01]">
+      <a href="mailto:anshthakar791@gmail.com" class="px-6 py-3 rounded-xl bg-white/5 border border-white/5 font-mono text-sm text-white hover:bg-purple-500 hover:text-white transition flex items-center gap-2">
+        <i class="fa-solid fa-envelope text-purple-400"></i> Gmail
+      </a>
+      <a href="https://www.linkedin.com/in/ansh-thakar/" target="_blank" class="px-6 py-3 rounded-xl bg-white/5 border border-white/5 font-mono text-sm text-white hover:bg-blue-600 hover:text-white transition flex items-center gap-2">
+        <i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn
+      </a>
+      <a href="https://github.com/ansh-thakar" target="_blank" class="px-6 py-3 rounded-xl bg-white/5 border border-white/5 font-mono text-sm text-white hover:bg-zinc-800 hover:text-white transition flex items-center gap-2">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+       <a href="" target="_blank" class="px-6 py-3 rounded-xl bg-white/5 border border-white/5 font-mono text-sm text-white hover:bg-zinc-800 hover:text-white transition flex items-center gap-2">
+        <i class="fa-brands fa-github"></i> Certifactes Drive
+      </a>
+      <a href="Portfolio%20Assets/Resume.pdf" target="_blank" class="px-6 py-3 rounded-xl bg-white/5 border border-white/5 font-mono text-sm text-white hover:bg-purple-500 hover:text-white transition flex items-center gap-2">
+        <i class="fa-solid fa-file-arrow-down text-purple-400"></i> Resume
+      </a>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/5 py-8 text-center font-mono text-xs text-gray-600 relative z-10">
+    &copy; 2026 Ansh Thakar. Built for focused execution.
+  </footer>
+
+  <script>
+    const spotlight = document.getElementById('hero-spotlight');
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      spotlight.style.setProperty('--x', `${x}%`);
+      spotlight.style.setProperty('--y', `${y}%`);
+    });
+
+    function reveal() {
+      const reveals = document.querySelectorAll(".reveal");
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) reveals[i].classList.add("active");
+      }
+    }
+    window.addEventListener("scroll", reveal);
+    setTimeout(reveal, 200);
+  </script>
 </body>
 </html>
